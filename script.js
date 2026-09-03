@@ -36,7 +36,7 @@ function showPanel(index) {
 function restartAnimations(screen) {
 
     const animatedElements = screen.querySelectorAll(
-        ".heart, .walking, .vanishing-boy, .moon, .phone, .dialogue"
+        ".heart, .walking, .vanishing-boy, .moon, .phone, .dialogue, .silence-phone, .message, .typing"
     );
 
     animatedElements.forEach((element) => {
