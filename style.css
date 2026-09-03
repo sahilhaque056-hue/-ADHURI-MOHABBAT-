@@ -2273,3 +2273,326 @@ button {
     }
 
 }
+ /* =========================================
+    PANEL 5 — S SLOWLY DISAPPEARS
+ ========================================= */
+
+.disappearing-panel {
+
+    background:
+        radial-gradient(
+            circle at 65% 55%,
+            rgba(110,80,130,.08),
+            transparent 35%
+        ),
+        linear-gradient(
+            120deg,
+            #08070d,
+            #100c15,
+            #040409
+        );
+
+}
+
+
+/* EMPTY ROAD */
+
+.empty-road {
+
+    position: absolute;
+
+    left: 45%;
+
+    bottom: 15%;
+
+    width: 50%;
+
+    height: 230px;
+
+}
+
+
+.road-line {
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 35px;
+
+    width: 100%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.14),
+            transparent
+        );
+
+}
+
+
+/* VANISHING BOY */
+
+.disappearing-panel .vanishing-boy {
+
+    position: absolute;
+
+    left: 55%;
+
+    bottom: 40px;
+
+    animation:
+        disappearWalk 7s ease-in-out infinite;
+
+}
+
+
+.disappearing-panel .stickman {
+
+    opacity: .75;
+
+}
+
+
+/* FLOATING MEMORIES */
+
+.memory-floating {
+
+    position: absolute;
+
+    color: rgba(255,255,255,.18);
+
+    font-size: 11px;
+
+    font-style: italic;
+
+    letter-spacing: .5px;
+
+    opacity: 0;
+
+}
+
+
+.memory-one {
+
+    left: 58%;
+
+    top: 28%;
+
+    animation:
+        memoryFloat 6s ease-in-out infinite;
+
+}
+
+
+.memory-two {
+
+    left: 68%;
+
+    top: 40%;
+
+    animation:
+        memoryFloat 6s ease-in-out infinite;
+
+    animation-delay: 1.8s;
+
+}
+
+
+.memory-three {
+
+    left: 52%;
+
+    top: 52%;
+
+    animation:
+        memoryFloat 6s ease-in-out infinite;
+
+    animation-delay: 3.5s;
+
+}
+
+
+/* EMOTIONAL LINE */
+
+.disappearing-panel .fade-line {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 8%;
+
+    transform: translateX(-50%);
+
+    width: 90%;
+
+    text-align: center;
+
+    color: #756d78;
+
+    font-size: 12px;
+
+    font-style: italic;
+
+    line-height: 1.8;
+
+}
+
+
+/* ANIMATIONS */
+
+@keyframes disappearWalk {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateX(100px)
+            scale(.75);
+
+    }
+
+    15% {
+
+        opacity: .8;
+
+    }
+
+    45% {
+
+        opacity: .65;
+
+        transform:
+            translateX(0)
+            scale(.85);
+
+    }
+
+    75% {
+
+        opacity: .35;
+
+        transform:
+            translateX(-100px)
+            scale(.7);
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translateX(-220px)
+            scale(.55);
+
+    }
+
+}
+
+
+@keyframes memoryFloat {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+
+    }
+
+    25% {
+
+        opacity: .35;
+
+    }
+
+    60% {
+
+        opacity: .2;
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translateY(-25px);
+
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width:700px) {
+
+    .empty-road {
+
+        left: 30%;
+
+        bottom: 20%;
+
+        width: 65%;
+
+        height: 180px;
+
+    }
+
+
+    .disappearing-panel .vanishing-boy {
+
+        left: 45%;
+
+        bottom: 30px;
+
+        transform: scale(.7);
+
+    }
+
+
+    .memory-one {
+
+        left: 50%;
+
+        top: 32%;
+
+    }
+
+
+    .memory-two {
+
+        left: 58%;
+
+        top: 44%;
+
+    }
+
+
+    .memory-three {
+
+        left: 45%;
+
+        top: 56%;
+
+    }
+
+
+    .disappearing-panel .fade-line {
+
+        bottom: 14%;
+
+        font-size: 10px;
+
+    }
+
+}
