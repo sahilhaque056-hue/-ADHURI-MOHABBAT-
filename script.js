@@ -1,22 +1,15 @@
-/* =========================================
-   OUR LITTLE STORY
-   PANEL CONTROLLER
-========================================= */
-
 const screens = document.querySelectorAll(".screen");
 
 const startBtn = document.getElementById("startBtn");
-
 const nextButtons = document.querySelectorAll(".nextBtn");
-
 const restartBtn = document.getElementById("restartBtn");
 
 let currentPanel = 0;
 
 
-/* =========================================
+/* =========================
    SHOW PANEL
-========================================= */
+========================= */
 
 function showPanel(index) {
 
@@ -32,15 +25,19 @@ function showPanel(index) {
 
     currentPanel = index;
 
-    /*
-       Har panel ke animation ko
-       dobara start karne ke liye.
-    */
+    restartAnimations(screens[index]);
+}
 
-    const animatedElements =
-        screens[index].querySelectorAll(
-            ".vanishing-boy, .walking, .heart, .moon"
-        );
+
+/* =========================
+   RESTART PANEL ANIMATIONS
+========================= */
+
+function restartAnimations(screen) {
+
+    const animatedElements = screen.querySelectorAll(
+        ".heart, .walking, .vanishing-boy, .moon, .phone, .dialogue"
+    );
 
     animatedElements.forEach((element) => {
 
@@ -54,9 +51,9 @@ function showPanel(index) {
 }
 
 
-/* =========================================
+/* =========================
    START STORY
-========================================= */
+========================= */
 
 if (startBtn) {
 
@@ -69,24 +66,22 @@ if (startBtn) {
 }
 
 
-/* =========================================
+/* =========================
    NEXT BUTTONS
-========================================= */
+========================= */
 
 nextButtons.forEach((button, index) => {
 
     button.addEventListener("click", () => {
 
         /*
-           Panel sequence:
-
-           0 = Start
-           1 = Story 01
-           2 = Story 02
-           3 = Story 03
-           4 = Story 04
-           5 = Story 05
-           6 = Ending
+            Start screen = 0
+            Panel 1     = 1
+            Panel 2     = 2
+            Panel 3     = 3
+            Panel 4     = 4
+            Panel 5     = 5
+            Panel 6     = 6
         */
 
         showPanel(index + 2);
@@ -96,9 +91,9 @@ nextButtons.forEach((button, index) => {
 });
 
 
-/* =========================================
+/* =========================
    RESTART STORY
-========================================= */
+========================= */
 
 if (restartBtn) {
 
@@ -111,20 +106,23 @@ if (restartBtn) {
 }
 
 
-/* =========================================
-   KEYBOARD SUPPORT
-========================================= */
+/* =========================
+   KEYBOARD CONTROLS
+========================= */
 
 document.addEventListener("keydown", (event) => {
 
     /*
-       Right arrow / Space = next
+        Right Arrow / Space
+        = Next
     */
 
     if (
         event.key === "ArrowRight" ||
         event.key === " "
     ) {
+
+        event.preventDefault();
 
         if (currentPanel < screens.length - 1) {
 
@@ -136,10 +134,13 @@ document.addEventListener("keydown", (event) => {
 
 
     /*
-       Left arrow = previous
+        Left Arrow
+        = Previous
     */
 
     if (event.key === "ArrowLeft") {
+
+        event.preventDefault();
 
         if (currentPanel > 0) {
 
@@ -152,17 +153,15 @@ document.addEventListener("keydown", (event) => {
 });
 
 
-/* =========================================
-   INITIAL PANEL
-========================================= */
+/* =========================
+   START AT FIRST SCREEN
+========================= */
 
 showPanel(0);
 
 
-/* =========================================
-   CONSOLE
-========================================= */
+/* =========================
+   CONSOLE MESSAGE
+========================= */
 
-console.log(
-    "❤️ Our Little Story is ready."
-);
+console.log("❤️ S & M — Our Story is ready.");
