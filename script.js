@@ -1,263 +1,168 @@
-/* =================================
+/* =========================================
    OUR LITTLE STORY
-   Interactive Story Script
-================================= */
+   PANEL CONTROLLER
+========================================= */
+
+const screens = document.querySelectorAll(".screen");
+
+const startBtn = document.getElementById("startBtn");
+
+const nextButtons = document.querySelectorAll(".nextBtn");
+
+const restartBtn = document.getElementById("restartBtn");
+
+let currentPanel = 0;
 
 
-/* =================================
-   1. REVEAL PANELS ON SCROLL
-================================= */
+/* =========================================
+   SHOW PANEL
+========================================= */
 
-const panels = document.querySelectorAll(".panel");
+function showPanel(index) {
 
-const revealObserver = new IntersectionObserver(
-    (entries) => {
-
-        entries.forEach((entry) => {
-
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-            }
-
-        });
-
-    },
-    {
-        threshold: 0.25
-    }
-);
-
-panels.forEach((panel) => {
-    revealObserver.observe(panel);
-});
-
-
-/* =================================
-   2. FADE BOY WHEN SCROLLING
-================================= */
-
-const disappearingSection =
-    document.querySelector(".disappearing");
-
-const fadingBoy =
-    document.querySelector(".fading-boy");
-
-const fadeText =
-    document.querySelector(".fade-text");
-
-
-function updateDisappearingBoy() {
-
-    if (!disappearingSection || !fadingBoy) {
+    if (index < 0 || index >= screens.length) {
         return;
     }
 
-    const rect =
-        disappearingSection.getBoundingClientRect();
+    screens.forEach((screen) => {
+        screen.classList.remove("active");
+    });
 
-    const windowHeight =
-        window.innerHeight;
+    screens[index].classList.add("active");
 
-    /*
-       Section viewport mein enter
-       karne ke baad progress calculate
-       karte hain.
-    */
-
-    let progress =
-        (windowHeight - rect.top) /
-        (windowHeight + rect.height);
-
-    progress =
-        Math.max(0, Math.min(1, progress));
-
+    currentPanel = index;
 
     /*
-       Boy opacity:
-       Starting = visible
-       Ending = almost invisible
+       Har panel ke animation ko
+       dobara start karne ke liye.
     */
 
-    let opacity =
-        1 - progress * 1.35;
+    const animatedElements =
+        screens[index].querySelectorAll(
+            ".vanishing-boy, .walking, .heart, .moon"
+        );
 
-    opacity =
-        Math.max(0, Math.min(1, opacity));
+    animatedElements.forEach((element) => {
 
+        element.style.animation = "none";
 
-    let scale =
-        1 - progress * 0.12;
+        void element.offsetWidth;
 
-    fadingBoy.style.opacity = opacity;
-    fadingBoy.style.transform =
-        `scale(${scale})`;
+        element.style.animation = "";
 
-
-    /*
-       Text bhi dheere fade hoga.
-    */
-
-    if (fadeText) {
-
-        let textOpacity =
-            0.8 - progress * 0.7;
-
-        textOpacity =
-            Math.max(0.1, textOpacity);
-
-        fadeText.style.opacity =
-            textOpacity;
-    }
+    });
 }
 
 
-window.addEventListener(
-    "scroll",
-    updateDisappearingBoy,
-    { passive: true }
-);
+/* =========================================
+   START STORY
+========================================= */
 
-updateDisappearingBoy();
+if (startBtn) {
 
+    startBtn.addEventListener("click", () => {
 
-/* =================================
-   3. HEARTBEAT EFFECT
-================================= */
-
-const hearts =
-    document.querySelectorAll(".heart");
-
-hearts.forEach((heart) => {
-
-    heart.addEventListener("mouseenter", () => {
-
-        heart.style.transform =
-            "scale(1.25)";
+        showPanel(1);
 
     });
 
-    heart.addEventListener("mouseleave", () => {
+}
 
-        heart.style.transform =
-            "scale(1)";
+
+/* =========================================
+   NEXT BUTTONS
+========================================= */
+
+nextButtons.forEach((button, index) => {
+
+    button.addEventListener("click", () => {
+
+        /*
+           Panel sequence:
+
+           0 = Start
+           1 = Story 01
+           2 = Story 02
+           3 = Story 03
+           4 = Story 04
+           5 = Story 05
+           6 = Ending
+        */
+
+        showPanel(index + 2);
 
     });
 
 });
 
 
-/* =================================
-   4. TYPEWRITER EFFECT
-================================= */
+/* =========================================
+   RESTART STORY
+========================================= */
 
-function typeWriter(element, speed = 45) {
+if (restartBtn) {
 
-    if (!element) {
-        return;
-    }
+    restartBtn.addEventListener("click", () => {
 
-    const originalText =
-        element.textContent.trim();
+        showPanel(0);
 
-    element.textContent = "";
+    });
 
-    let index = 0;
-
-    function write() {
-
-        if (index < originalText.length) {
-
-            element.textContent +=
-                originalText.charAt(index);
-
-            index++;
-
-            setTimeout(write, speed);
-
-        }
-    }
-
-    write();
 }
 
 
-/*
-   Final message typewriter.
-*/
+/* =========================================
+   KEYBOARD SUPPORT
+========================================= */
 
-const finalMessage =
-    document.querySelector(".final-message");
+document.addEventListener("keydown", (event) => {
 
-let finalTyped = false;
+    /*
+       Right arrow / Space = next
+    */
 
-const finalObserver =
-    new IntersectionObserver(
-        (entries) => {
+    if (
+        event.key === "ArrowRight" ||
+        event.key === " "
+    ) {
 
-            entries.forEach((entry) => {
+        if (currentPanel < screens.length - 1) {
 
-                if (
-                    entry.isIntersecting &&
-                    !finalTyped
-                ) {
+            showPanel(currentPanel + 1);
 
-                    finalTyped = true;
-
-                    typeWriter(
-                        finalMessage,
-                        35
-                    );
-
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.5
         }
-    );
 
-
-if (finalMessage) {
-    finalObserver.observe(finalMessage);
-}
-
-
-/* =================================
-   5. PARALLAX EFFECT
-================================= */
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        const scrollPosition =
-            window.scrollY;
-
-        document
-            .querySelectorAll(".moon")
-            .forEach((moon) => {
-
-                const movement =
-                    scrollPosition * 0.015;
-
-                moon.style.transform =
-                    `translateY(${movement}px)`;
-
-            });
-
-    },
-    {
-        passive: true
     }
-);
 
 
-/* =================================
-   6. CONSOLE MESSAGE
-================================= */
+    /*
+       Left arrow = previous
+    */
+
+    if (event.key === "ArrowLeft") {
+
+        if (currentPanel > 0) {
+
+            showPanel(currentPanel - 1);
+
+        }
+
+    }
+
+});
+
+
+/* =========================================
+   INITIAL PANEL
+========================================= */
+
+showPanel(0);
+
+
+/* =========================================
+   CONSOLE
+========================================= */
 
 console.log(
-    "❤️ Our Little Story has started..."
+    "❤️ Our Little Story is ready."
 );
