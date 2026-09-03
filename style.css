@@ -1,8 +1,3 @@
-/* =========================================
-   OUR LITTLE STORY
-   CINEMATIC PANEL DESIGN
-========================================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -14,18 +9,14 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-}
-
-body {
     font-family: Georgia, "Times New Roman", serif;
-    background: #050507;
+    background: #090711;
     color: white;
 }
 
-
-/* =========================================
-   STORY CONTAINER
-========================================= */
+body {
+    overflow: hidden;
+}
 
 #story {
     width: 100%;
@@ -34,16 +25,13 @@ body {
     overflow: hidden;
 }
 
-
-/* =========================================
-   EVERY SCREEN
-========================================= */
+/* =========================
+   ALL SCREENS
+========================= */
 
 .screen {
     position: absolute;
-
     inset: 0;
-
     width: 100%;
     height: 100vh;
 
@@ -51,81 +39,553 @@ body {
     align-items: center;
     justify-content: center;
 
-    text-align: center;
-
-    padding: 30px 20px;
-
     opacity: 0;
     visibility: hidden;
 
     transform: scale(1.04);
 
     transition:
-        opacity 0.9s ease,
-        transform 0.9s ease,
-        visibility 0.9s ease;
+        opacity 0.8s ease,
+        transform 1s ease,
+        visibility 0.8s;
 
     overflow: hidden;
 }
 
-
-/* Active panel */
-
 .screen.active {
     opacity: 1;
     visibility: visible;
-
     transform: scale(1);
     z-index: 10;
 }
 
-
-/* =========================================
-   BACKGROUND
-========================================= */
-
-.screen::before {
-    content: "";
-
-    position: absolute;
-
-    width: 500px;
-    height: 500px;
-
-    border-radius: 50%;
-
-    background: rgba(255, 80, 130, 0.07);
-
-    filter: blur(100px);
-
-    pointer-events: none;
-}
-
-
-/* =========================================
+/* =========================
    START SCREEN
-========================================= */
+========================= */
 
 #startScreen {
+    text-align: center;
     background:
-        radial-gradient(
-            circle at center,
-            #271526 0%,
-            #0e0b13 45%,
-            #030305 100%
-        );
+        radial-gradient(circle at 50% 40%, #4b193e 0%, transparent 35%),
+        linear-gradient(135deg, #090711, #1b0c22, #080710);
 }
 
 .start-content {
     position: relative;
-
-    width: min(700px, 100%);
-
+    z-index: 2;
     animation: startAppear 1.5s ease forwards;
 }
 
-@keyframes startAppear {
+.small-title {
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: #eab8d9;
+    margin-bottom: 18px;
+}
 
+.start-content h1 {
+    font-size: clamp(55px, 10vw, 110px);
+    font-weight: normal;
+    letter-spacing: 8px;
+}
+
+.start-content h1 span {
+    color: #ff5b91;
+    font-size: 0.65em;
+}
+
+.start-heart {
+    font-size: 48px;
+    margin: 25px 0;
+    animation: heartBeat 1.5s infinite;
+}
+
+.start-content p {
+    color: #cbbccc;
+    line-height: 1.8;
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+#startBtn {
+    padding: 16px 35px;
+    border-radius: 50px;
+    color: white;
+    background: linear-gradient(135deg, #ff4f8b, #a83cce);
+    font-size: 15px;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 35px rgba(255, 64, 130, 0.35);
+    transition: 0.3s ease;
+}
+
+#startBtn:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 15px 45px rgba(255, 64, 130, 0.5);
+}
+
+/* =========================
+   STORY PANELS
+========================= */
+
+.story-panel {
+    background:
+        radial-gradient(circle at 75% 30%, rgba(255, 80, 145, 0.12), transparent 30%),
+        linear-gradient(135deg, #100b18, #1a1021 50%, #0b0811);
+}
+
+.dark-panel {
+    background:
+        radial-gradient(circle at 50% 35%, rgba(118, 54, 116, 0.16), transparent 32%),
+        linear-gradient(135deg, #090811, #160e1b, #07070d);
+}
+
+.disappearing-panel {
+    background:
+        radial-gradient(circle at 35% 40%, rgba(100, 80, 150, 0.10), transparent 35%),
+        linear-gradient(135deg, #07070d, #0d0d17, #050509);
+}
+
+.final-panel {
+    background:
+        radial-gradient(circle at 70% 30%, rgba(104, 53, 120, 0.18), transparent 30%),
+        linear-gradient(135deg, #08070e, #160d1b, #05050a);
+}
+
+/* =========================
+   PANEL NUMBER
+========================= */
+
+.panel-number {
+    position: absolute;
+    top: 35px;
+    right: 50px;
+
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #887d8e;
+}
+
+/* =========================
+   STORY TEXT
+========================= */
+
+.story-text {
+    position: absolute;
+    left: 9%;
+    top: 20%;
+    width: min(450px, 40%);
+    z-index: 5;
+}
+
+.story-text span,
+.final-text span {
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: #e56f9e;
+}
+
+.story-text h2 {
+    margin-top: 15px;
+    font-size: clamp(38px, 5vw, 68px);
+    line-height: 1.05;
+    font-weight: normal;
+}
+
+.story-text p {
+    margin-top: 22px;
+    max-width: 430px;
+    color: #bdb3c2;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+/* =========================
+   CHARACTERS
+========================= */
+
+.characters {
+    position: absolute;
+    right: 10%;
+    bottom: 14%;
+    width: 42%;
+    height: 45%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+}
+
+.stickman {
+    width: 75px;
+    height: 170px;
+    position: relative;
+}
+
+.stickman .head {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border: 3px solid white;
+    border-radius: 50%;
+    top: 0;
+    left: 14px;
+}
+
+.stickman .body {
+    position: absolute;
+    width: 3px;
+    height: 65px;
+    background: white;
+    top: 47px;
+    left: 37px;
+}
+
+.stickman .arm {
+    position: absolute;
+    width: 3px;
+    height: 55px;
+    background: white;
+    top: 55px;
+    transform-origin: top;
+}
+
+.stickman .arm.left {
+    left: 37px;
+    transform: rotate(45deg);
+}
+
+.stickman .arm.right {
+    left: 37px;
+    transform: rotate(-45deg);
+}
+
+.stickman .leg {
+    position: absolute;
+    width: 3px;
+    height: 65px;
+    background: white;
+    top: 108px;
+    transform-origin: top;
+}
+
+.stickman .leg.left {
+    left: 37px;
+    transform: rotate(28deg);
+}
+
+.stickman .leg.right {
+    left: 37px;
+    transform: rotate(-28deg);
+}
+
+/* BOY */
+
+.boy .head {
+    border-color: #74b9ff;
+}
+
+.boy .body,
+.boy .arm,
+.boy .leg {
+    background: #74b9ff;
+}
+
+/* GIRL */
+
+.girl .head {
+    border-color: #ff8fbd;
+}
+
+.girl .body,
+.girl .arm,
+.girl .leg {
+    background: #ff8fbd;
+}
+
+/* NAME */
+
+.name-tag {
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+
+    color: white;
+    opacity: 0.9;
+}
+
+/* =========================
+   HEART
+========================= */
+
+.heart {
+    font-size: 42px;
+    animation: heartBeat 1.4s infinite;
+}
+
+.floating {
+    animation:
+        heartBeat 1.4s infinite,
+        floating 3s ease-in-out infinite;
+}
+
+.broken-heart {
+    font-size: 40px;
+    opacity: 0.8;
+    animation: brokenHeart 2s infinite;
+}
+
+/* =========================
+   MEMORY
+========================= */
+
+.memory {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    color: #9d91a2;
+    font-style: italic;
+    font-size: 14px;
+}
+
+/* =========================
+   DIALOGUE
+========================= */
+
+.dialogue {
+    position: absolute;
+    bottom: 27%;
+    right: 14%;
+
+    max-width: 330px;
+    padding: 18px 22px;
+
+    border-radius: 18px 18px 18px 3px;
+
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    color: #d4cbd6;
+    font-style: italic;
+
+    animation: dialogueAppear 2s ease;
+}
+
+/* =========================
+   PHONE
+========================= */
+
+.phone {
+    position: absolute;
+    right: 15%;
+    top: 24%;
+
+    width: 230px;
+    min-height: 300px;
+
+    padding: 22px;
+
+    border: 6px solid #28232d;
+    border-radius: 28px;
+
+    background: #111017;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.5),
+        inset 0 0 30px rgba(255, 255, 255, 0.02);
+
+    animation: phoneAppear 1s ease;
+}
+
+.message {
+    width: fit-content;
+    max-width: 170px;
+
+    padding: 9px 13px;
+    margin: 14px 0;
+
+    border-radius: 15px;
+
+    background: #24202a;
+    color: #cfc5d1;
+
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.message:nth-child(2),
+.message:nth-child(4) {
+    margin-left: auto;
+    background: #6d3155;
+    color: white;
+}
+
+.typing {
+    color: #e26b9d;
+    letter-spacing: 5px;
+    margin-top: 20px;
+    animation: typing 1s infinite;
+}
+
+/* =========================
+   WAITING BOY
+========================= */
+
+.waiting-boy {
+    position: absolute;
+    left: 18%;
+    bottom: 13%;
+}
+
+/* =========================
+   VANISHING BOY
+========================= */
+
+.vanishing-boy {
+    position: absolute;
+    left: 50%;
+    bottom: 16%;
+
+    transform: translateX(-50%);
+
+    animation: vanishBoy 6s ease-in-out infinite;
+}
+
+.fade-line {
+    position: absolute;
+    bottom: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    color: #756d7a;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.moon {
+    position: absolute;
+    top: 12%;
+    right: 15%;
+
+    font-size: 65px;
+
+    animation: moonGlow 4s ease-in-out infinite;
+}
+
+.final-girl {
+    position: absolute;
+    left: 17%;
+    bottom: 15%;
+}
+
+.final-text {
+    position: absolute;
+    left: 43%;
+    top: 16%;
+    width: min(520px, 48%);
+}
+
+.final-text h2 {
+    margin-top: 18px;
+    font-size: clamp(38px, 5vw, 65px);
+    line-height: 1.08;
+    font-weight: normal;
+}
+
+.final-text p {
+    margin-top: 25px;
+    color: #bdb3c2;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.final-heart {
+    margin-top: 20px;
+    font-size: 32px;
+}
+
+.final-text h3 {
+    margin-top: 12px;
+
+    font-size: 32px;
+    font-weight: normal;
+
+    background: linear-gradient(90deg, #ff78a8, #c785ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.last-line {
+    margin-top: 20px;
+    color: #827687;
+    font-style: italic;
+    font-size: 13px;
+}
+
+/* =========================
+   NEXT BUTTON
+========================= */
+
+.nextBtn,
+#restartBtn {
+    position: absolute;
+    right: 50px;
+    bottom: 35px;
+
+    padding: 12px 24px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    color: white;
+
+    font-size: 13px;
+    letter-spacing: 1px;
+
+    transition: 0.3s ease;
+}
+
+.nextBtn:hover,
+#restartBtn:hover {
+    background: rgba(255, 92, 145, 0.2);
+    transform: translateX(5px);
+}
+
+#restartBtn {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#restartBtn:hover {
+    transform: translateX(-50%) translateY(-3px);
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes startAppear {
     from {
         opacity: 0;
         transform: translateY(30px);
@@ -137,812 +597,147 @@ body {
     }
 }
 
-
-.small-title {
-    font-family: Arial, sans-serif;
-
-    font-size: 11px;
-
-    letter-spacing: 5px;
-
-    opacity: 0.5;
-
-    margin-bottom: 25px;
-}
-
-
-.start-content h1 {
-    font-size: clamp(45px, 9vw, 90px);
-
-    font-weight: normal;
-
-    letter-spacing: -3px;
-
-    margin-bottom: 30px;
-}
-
-
-.start-heart {
-    font-size: 60px;
-
-    margin: 20px 0 30px;
-
-    animation: heartBeat 2s infinite;
-}
-
-
-.start-content p {
-    font-family: Arial, sans-serif;
-
-    font-size: 15px;
-
-    line-height: 1.8;
-
-    opacity: 0.55;
-
-    margin-bottom: 40px;
-}
-
-
-/* =========================================
-   BUTTONS
-========================================= */
-
-button {
-    border: 1px solid rgba(255,255,255,0.3);
-
-    background: rgba(255,255,255,0.05);
-
-    color: white;
-
-    padding: 15px 28px;
-
-    border-radius: 50px;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 13px;
-
-    letter-spacing: 1px;
-
-    cursor: pointer;
-
-    transition:
-        background 0.3s ease,
-        transform 0.3s ease,
-        border-color 0.3s ease;
-}
-
-button:hover {
-    background: rgba(255,255,255,0.15);
-
-    border-color: rgba(255,255,255,0.6);
-
-    transform: translateY(-3px);
-}
-
-#startBtn {
-    padding: 17px 35px;
-
-    background: rgba(255, 100, 150, 0.12);
-
-    border-color: rgba(255, 150, 180, 0.4);
-
-    animation: buttonGlow 2.5s infinite;
-}
-
-@keyframes buttonGlow {
-
-    0%, 100% {
-        box-shadow: 0 0 0 rgba(255,100,150,0);
-    }
-
-    50% {
-        box-shadow:
-            0 0 35px rgba(255,100,150,0.18);
-    }
-}
-
-
-/* =========================================
-   STORY PANELS
-========================================= */
-
-.story-panel {
-    background:
-        radial-gradient(
-            circle at center,
-            #261526 0%,
-            #100b13 55%,
-            #050507 100%
-        );
-}
-
-.dark-panel {
-    background:
-        radial-gradient(
-            circle at center,
-            #17131c 0%,
-            #08080d 55%,
-            #020204 100%
-        );
-}
-
-.disappearing-panel {
-    background:
-        radial-gradient(
-            circle at center,
-            #101018 0%,
-            #06060a 60%,
-            #010102 100%
-        );
-}
-
-.final-panel {
-    background:
-        radial-gradient(
-            circle at 50% 30%,
-            #181727 0%,
-            #08080e 50%,
-            #020204 100%
-        );
-}
-
-
-/* =========================================
-   PANEL NUMBER
-========================================= */
-
-.panel-number {
-    position: absolute;
-
-    top: 30px;
-    left: 30px;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 3px;
-
-    opacity: 0.35;
-}
-
-
-/* =========================================
-   STORY TEXT
-========================================= */
-
-.story-text {
-    position: absolute;
-
-    top: 11%;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: min(750px, 90%);
-
-    z-index: 5;
-}
-
-.story-text span,
-.final-text span {
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 4px;
-
-    opacity: 0.45;
-}
-
-
-.story-text h2 {
-    font-size: clamp(32px, 6vw, 60px);
-
-    font-weight: normal;
-
-    line-height: 1.05;
-
-    margin: 18px 0 20px;
-
-    letter-spacing: -2px;
-}
-
-
-.story-text p {
-    font-family: Arial, sans-serif;
-
-    max-width: 600px;
-
-    margin: auto;
-
-    font-size: 14px;
-
-    line-height: 1.8;
-
-    opacity: 0.55;
-}
-
-
-/* =========================================
-   NEXT BUTTON
-========================================= */
-
-.nextBtn {
-    position: absolute;
-
-    bottom: 35px;
-
-    right: 35px;
-
-    z-index: 20;
-}
-
-
-/* =========================================
-   CHARACTERS
-========================================= */
-
-.characters {
-    position: absolute;
-
-    left: 50%;
-    bottom: 16%;
-
-    transform: translateX(-50%);
-
-    width: min(550px, 90%);
-
-    height: 230px;
-
-    display: flex;
-
-    align-items: flex-end;
-
-    justify-content: center;
-
-    gap: 90px;
-
-    z-index: 3;
-}
-
-
-/* =========================================
-   STICKMAN
-========================================= */
-
-.stickman {
-    position: relative;
-
-    width: 70px;
-    height: 165px;
-
-    flex-shrink: 0;
-}
-
-
-/* Head */
-
-.stickman .head {
-    position: absolute;
-
-    width: 45px;
-    height: 45px;
-
-    left: 12px;
-    top: 0;
-
-    border: 3px solid white;
-
-    border-radius: 50%;
-}
-
-
-/* Body */
-
-.stickman .body {
-    position: absolute;
-
-    width: 3px;
-    height: 65px;
-
-    left: 34px;
-    top: 44px;
-
-    background: white;
-}
-
-
-/* Arms */
-
-.stickman .arm {
-    position: absolute;
-
-    width: 43px;
-    height: 3px;
-
-    left: 34px;
-    top: 68px;
-
-    background: white;
-
-    transform-origin: left center;
-}
-
-.stickman .arm.left {
-    transform: rotate(145deg);
-}
-
-.stickman .arm.right {
-    transform: rotate(35deg);
-}
-
-
-/* Legs */
-
-.stickman .leg {
-    position: absolute;
-
-    width: 48px;
-    height: 3px;
-
-    left: 34px;
-    top: 108px;
-
-    background: white;
-
-    transform-origin: left center;
-}
-
-.stickman .leg.left {
-    transform: rotate(120deg);
-}
-
-.stickman .leg.right {
-    transform: rotate(60deg);
-}
-
-
-/* Boy */
-
-.boy .head {
-    border-color: #9ed6ff;
-}
-
-.boy .body,
-.boy .arm,
-.boy .leg {
-    background: #9ed6ff;
-}
-
-
-/* Girl */
-
-.girl .head {
-    border-color: #ffadc9;
-}
-
-.girl .body,
-.girl .arm,
-.girl .leg {
-    background: #ffadc9;
-}
-
-
-/* =========================================
-   HEART
-========================================= */
-
-.heart {
-    font-size: 35px;
-
-    margin-bottom: 90px;
-
-    animation:
-        heartFloat 2s ease-in-out infinite;
-}
-
-@keyframes heartFloat {
-
-    0%, 100% {
-        transform: translateY(0) scale(1);
-    }
-
-    50% {
-        transform: translateY(-12px) scale(1.1);
-    }
-}
-
-
 @keyframes heartBeat {
-
-    0%, 100% {
+    0%,
+    100% {
         transform: scale(1);
-    }
-
-    15% {
-        transform: scale(1.15);
-    }
-
-    30% {
-        transform: scale(1);
-    }
-}
-
-
-/* =========================================
-   HAPPY WALKING
-========================================= */
-
-.walking {
-    animation:
-        walking 1.8s ease-in-out infinite;
-}
-
-.happy-scene .walking:nth-child(1) {
-    animation-delay: 0.1s;
-}
-
-.happy-scene .walking:nth-child(3) {
-    animation-delay: 0.3s;
-}
-
-@keyframes walking {
-
-    0%, 100% {
-        transform: translateY(0) rotate(0);
     }
 
     50% {
-        transform: translateY(-13px) rotate(2deg);
+        transform: scale(1.2);
     }
 }
 
+@keyframes floating {
+    0%,
+    100% {
+        margin-top: 0;
+    }
 
-/* =========================================
-   SEPARATION
-========================================= */
-
-.separated {
-    gap: 210px;
+    50% {
+        margin-top: -15px;
+    }
 }
 
-.broken-heart {
-    font-size: 35px;
+@keyframes brokenHeart {
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
 
-    animation: brokenFloat 2.5s infinite;
+    25% {
+        transform: rotate(-8deg);
+    }
+
+    75% {
+        transform: rotate(8deg);
+    }
 }
 
-@keyframes brokenFloat {
+@keyframes dialogueAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
 
-    0%, 100% {
+    to {
+        opacity: 1;
         transform: translateY(0);
     }
+}
 
-    50% {
-        transform: translateY(-10px);
+@keyframes phoneAppear {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
     }
-}
 
-
-/* =========================================
-   DIALOGUE
-========================================= */
-
-.dialogue {
-    position: absolute;
-
-    bottom: 17%;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    font-family: Georgia, serif;
-
-    font-style: italic;
-
-    font-size: 17px;
-
-    opacity: 0.55;
-}
-
-
-/* =========================================
-   PHONE
-========================================= */
-
-.phone {
-    position: absolute;
-
-    left: 50%;
-    bottom: 17%;
-
-    transform: translateX(-50%);
-
-    width: min(310px, 85%);
-
-    padding: 15px;
-
-    border-radius: 20px;
-
-    background: rgba(255,255,255,0.025);
-
-    border: 1px solid rgba(255,255,255,0.08);
-
-    box-shadow:
-        0 20px 80px rgba(0,0,0,0.5);
-
-    text-align: left;
-}
-
-.message {
-    padding: 10px 12px;
-
-    margin: 5px 0;
-
-    border-radius: 10px;
-
-    background: rgba(255,255,255,0.04);
-
-    font-family: Arial, sans-serif;
-
-    font-size: 12px;
-
-    opacity: 0.6;
-}
-
-.typing {
-    padding: 10px;
-
-    text-align: center;
-
-    letter-spacing: 7px;
-
-    opacity: 0.25;
-
-    animation: typing 1.5s infinite;
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @keyframes typing {
-
-    0%, 100% {
-        opacity: 0.15;
+    0%,
+    100% {
+        opacity: 0.2;
     }
 
     50% {
-        opacity: 0.7;
+        opacity: 1;
     }
 }
 
-
-/* =========================================
-   WAITING BOY
-========================================= */
-
-.waiting-boy {
-    position: absolute;
-
-    right: 16%;
-
-    bottom: 12%;
-
-    animation: wait 3s ease-in-out infinite;
-}
-
-@keyframes wait {
-
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-7px);
-    }
-}
-
-
-/* =========================================
-   VANISHING BOY
-========================================= */
-
-.vanishing-boy {
-    position: absolute;
-
-    left: 50%;
-
-    bottom: 15%;
-
-    transform: translateX(-50%);
-
-    animation: vanish 5s ease-in-out infinite;
-}
-
-@keyframes vanish {
-
+@keyframes vanishBoy {
     0% {
         opacity: 1;
-
-        transform:
-            translateX(-50%)
-            scale(1);
+        transform: translateX(-50%) translateY(0);
     }
 
-    55% {
-        opacity: 0.5;
+    60% {
+        opacity: 0.7;
+        transform: translateX(-50%) translateY(-5px);
     }
 
     100% {
         opacity: 0;
-
-        transform:
-            translateX(-50%)
-            scale(0.75);
+        transform: translateX(-50%) translateY(-20px);
     }
 }
 
-
-.fade-line {
-    position: absolute;
-
-    bottom: 11%;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    font-family: Georgia, serif;
-
-    font-style: italic;
-
-    font-size: 14px;
-
-    opacity: 0.35;
-}
-
-
-/* =========================================
-   FINAL PANEL
-========================================= */
-
-.moon {
-    position: absolute;
-
-    top: 10%;
-
-    right: 13%;
-
-    font-size: 60px;
-
-    animation: moonFloat 4s ease-in-out infinite;
-}
-
-@keyframes moonFloat {
-
-    0%, 100% {
-        transform: translateY(0);
+@keyframes moonGlow {
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.75;
     }
 
     50% {
-        transform: translateY(-12px);
+        transform: scale(1.08);
+        opacity: 1;
     }
 }
 
-
-.final-girl {
-    position: absolute;
-
-    left: 20%;
-
-    bottom: 15%;
-}
-
-
-.final-text {
-    position: absolute;
-
-    left: 50%;
-    top: 18%;
-
-    transform: translateX(-50%);
-
-    width: min(700px, 90%);
-}
-
-
-.final-text h2 {
-    font-size: clamp(32px, 6vw, 55px);
-
-    font-weight: normal;
-
-    line-height: 1.1;
-
-    margin: 20px 0 30px;
-}
-
-
-.final-text p {
-    font-family: Georgia, serif;
-
-    font-size: 16px;
-
-    line-height: 1.8;
-
-    opacity: 0.55;
-}
-
-
-.final-heart {
-    font-size: 55px;
-
-    margin: 20px 0;
-
-    opacity: 0.6;
-
-    animation: heartBeat 2.5s infinite;
-}
-
-
-.last-line {
-    font-family: Georgia, serif;
-
-    font-style: italic;
-
-    font-size: 15px;
-
-    opacity: 0.4;
-}
-
-
-#restartBtn {
-    position: absolute;
-
-    bottom: 30px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-}
-
-
-/* =========================================
+/* =========================
    MOBILE
-========================================= */
+========================= */
 
-@media (max-width: 600px) {
-
-    .screen {
-        padding: 20px;
-    }
-
-    .panel-number {
-        top: 20px;
-        left: 20px;
-    }
+@media (max-width: 700px) {
 
     .story-text {
+        left: 7%;
         top: 10%;
+        width: 86%;
     }
 
     .story-text h2 {
-        font-size: 35px;
+        font-size: 38px;
     }
 
     .story-text p {
         font-size: 13px;
+        line-height: 1.6;
+        max-width: 90%;
     }
 
     .characters {
-        bottom: 17%;
-
-        gap: 45px;
+        right: 0;
+        bottom: 12%;
+        width: 100%;
+        height: 35%;
+        gap: 35px;
     }
 
-    .separated {
-        gap: 110px;
+    .panel-number {
+        top: 20px;
+        right: 22px;
+    }
+
+    .memory {
+        bottom: 82px;
+        width: 90%;
+        text-align: center;
     }
 
     .nextBtn {
@@ -950,41 +745,80 @@ button:hover {
         bottom: 20px;
     }
 
+    .phone {
+        right: 50%;
+        transform: translateX(50%);
+        top: 43%;
+        width: 190px;
+        min-height: 245px;
+    }
+
     .waiting-boy {
-        right: 12%;
+        left: 8%;
+        bottom: 10%;
+        transform: scale(0.7);
+    }
+
+    .dialogue {
+        right: 5%;
+        bottom: 25%;
+        max-width: 220px;
+        font-size: 12px;
+    }
+
+    .vanishing-boy {
         bottom: 14%;
     }
 
-    .final-girl {
-        left: 10%;
-        bottom: 15%;
-        transform: scale(0.85);
+    .fade-line {
+        width: 90%;
+        text-align: center;
+        bottom: 75px;
     }
 
     .moon {
-        right: 10%;
         top: 8%;
+        right: 10%;
         font-size: 45px;
     }
 
+    .final-girl {
+        left: 8%;
+        bottom: 12%;
+        transform: scale(0.75);
+    }
+
     .final-text {
-        top: 14%;
+        left: 8%;
+        top: 10%;
+        width: 84%;
     }
 
     .final-text h2 {
-        font-size: 32px;
+        font-size: 34px;
     }
 
     .final-text p {
-        font-size: 14px;
+        font-size: 12px;
+        line-height: 1.5;
+        margin-top: 15px;
     }
-}
 
+    .final-text h3 {
+        font-size: 27px;
+    }
 
-/* =========================================
-   SCROLLBAR DISABLED
-========================================= */
+    #restartBtn {
+        bottom: 18px;
+        font-size: 12px;
+        padding: 10px 18px;
+    }
 
-::-webkit-scrollbar {
-    display: none;
-}
+    .start-content {
+        width: 90%;
+    }
+
+    .start-content h1 {
+        font-size: 58px;
+    }
+   }
