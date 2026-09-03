@@ -1726,3 +1726,519 @@ button {
     }
 
 }
+/* =========================================
+   PANEL 4 — THE SILENCE
+========================================= */
+
+.silence-panel {
+    background:
+        radial-gradient(
+            circle at 72% 40%,
+            rgba(100, 70, 120, .13),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #08070d,
+            #110d17,
+            #05050a
+        );
+}
+
+/* Dark emotional atmosphere */
+
+.silence-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(255,255,255,.025),
+            transparent 25%
+        );
+
+    pointer-events: none;
+}
+
+
+/* PHONE */
+
+.silence-phone {
+    position: absolute;
+
+    right: 14%;
+    top: 50%;
+
+    width: 270px;
+    height: 500px;
+
+    transform: translateY(-50%);
+
+    border-radius: 32px;
+
+    background: #0c0b11;
+
+    border: 2px solid rgba(255,255,255,.13);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.65),
+        inset 0 0 30px rgba(255,255,255,.025);
+
+    overflow: hidden;
+
+    animation: phoneEnter 1.2s ease;
+}
+
+
+/* PHONE TOP */
+
+.phone-top {
+    height: 34px;
+
+    padding: 10px 18px;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    color: #aaa2ae;
+}
+
+
+/* CHAT HEADER */
+
+.chat-header {
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px 15px;
+
+    border-top: 1px solid rgba(255,255,255,.04);
+    border-bottom: 1px solid rgba(255,255,255,.07);
+
+    background: rgba(255,255,255,.025);
+}
+
+.chat-avatar {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(180,120,160,.18);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    font-family: Georgia, serif;
+
+    color: #ddd0dc;
+
+    font-size: 14px;
+}
+
+.chat-header strong {
+    display: block;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    font-weight: normal;
+
+    color: #eee;
+}
+
+.chat-header small {
+    display: block;
+
+    margin-top: 3px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
+
+    color: #77717c;
+}
+
+
+/* CHAT AREA */
+
+.chat-area {
+    position: relative;
+
+    height: calc(100% - 99px);
+
+    padding: 25px 15px;
+}
+
+
+/* MESSAGE */
+
+.message {
+    position: absolute;
+
+    right: 15px;
+
+    max-width: 190px;
+
+    padding: 10px 14px;
+
+    border-radius: 17px 17px 4px 17px;
+
+    background: #29232e;
+
+    border: 1px solid rgba(255,255,255,.06);
+
+    color: #ddd6df;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+
+    opacity: 0;
+
+    transform: translateY(12px) scale(.96);
+}
+
+
+/* Individual positions */
+
+.message-one {
+    top: 30px;
+
+    animation:
+        messageAppear .7s ease forwards;
+
+    animation-delay: .9s;
+}
+
+.message-two {
+    top: 85px;
+
+    animation:
+        messageAppear .7s ease forwards;
+
+    animation-delay: 2s;
+}
+
+.message-three {
+    top: 140px;
+
+    animation:
+        messageAppear .7s ease forwards;
+
+    animation-delay: 3.1s;
+}
+
+.message-four {
+    top: 195px;
+
+    animation:
+        messageAppear .7s ease forwards;
+
+    animation-delay: 4.2s;
+}
+
+
+/* Delivered */
+
+.message-time {
+    position: absolute;
+
+    right: 18px;
+    top: 248px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 7px;
+
+    color: #625d65;
+
+    opacity: 0;
+
+    animation: fadeSimple 1s ease forwards;
+
+    animation-delay: 5s;
+}
+
+
+/* Typing */
+
+.typing {
+    position: absolute;
+
+    left: 17px;
+    bottom: 20px;
+
+    width: 42px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 3px;
+
+    border-radius: 14px;
+
+    background: rgba(255,255,255,.06);
+
+    opacity: 0;
+
+    animation:
+        typingAppear 1s ease forwards;
+
+    animation-delay: 5.7s;
+}
+
+.typing span {
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #8d848f;
+
+    animation: typingDot 1.2s infinite;
+}
+
+.typing span:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.typing span:nth-child(3) {
+    animation-delay: .4s;
+}
+
+
+/* WAITING BOY */
+
+.waiting-boy {
+    position: absolute;
+
+    left: 30%;
+
+    bottom: 19%;
+
+    animation: waitingBoy 3s ease-in-out infinite;
+}
+
+
+/* HEART */
+
+.silence-heart {
+    position: absolute;
+
+    left: 38%;
+
+    top: 35%;
+
+    font-size: 35px;
+
+    color: rgba(255,255,255,.18);
+
+    animation: brokenHeart 3s ease-in-out infinite;
+}
+
+
+/* BOTTOM LINE */
+
+.silence-line {
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 8%;
+
+    transform: translateX(-50%);
+
+    width: 90%;
+
+    text-align: center;
+
+    color: #77717c;
+
+    font-size: 13px;
+
+    font-style: italic;
+
+    letter-spacing: .3px;
+}
+
+
+/* ANIMATIONS */
+
+@keyframes phoneEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(70px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+
+}
+
+@keyframes messageAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+@keyframes fadeSimple {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+@keyframes typingAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes typingDot {
+
+    0%, 100% {
+        opacity: .35;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-2px);
+    }
+
+}
+
+@keyframes waitingBoy {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+}
+
+@keyframes brokenHeart {
+
+    0%, 100% {
+        opacity: .15;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .35;
+        transform: scale(1.08);
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .silence-phone {
+        right: 7%;
+
+        top: 52%;
+
+        width: 210px;
+        height: 390px;
+
+        border-radius: 25px;
+    }
+
+    .waiting-boy {
+        left: 9%;
+        bottom: 18%;
+
+        transform: scale(.75);
+    }
+
+    .silence-heart {
+        left: 35%;
+        top: 39%;
+
+        font-size: 25px;
+    }
+
+    .message {
+        max-width: 145px;
+
+        padding: 8px 11px;
+
+        font-size: 9px;
+    }
+
+    .message-one {
+        top: 25px;
+    }
+
+    .message-two {
+        top: 70px;
+    }
+
+    .message-three {
+        top: 115px;
+    }
+
+    .message-four {
+        top: 160px;
+    }
+
+    .message-time {
+        top: 207px;
+    }
+
+    .silence-line {
+        bottom: 13%;
+
+        font-size: 10px;
+    }
+
+            }
