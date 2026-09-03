@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,16 +12,65 @@
 
 <body>
 
-    <!-- Opening -->
-    <section class="panel intro">
-        <div class="stars"></div>
+    <!-- =========================
+         START SCREEN
+    ========================== -->
 
-        <div class="story-content">
-            <p class="small-text">A STORY THAT I WILL NEVER FORGET</p>
+    <main id="story">
 
-            <h1>Our Little Story</h1>
+        <section class="screen active" id="startScreen">
 
-            <div class="characters">
+            <div class="start-content">
+
+                <div class="small-title">
+                    A STORY OF TWO HEARTS
+                </div>
+
+                <h1>Our Little Story</h1>
+
+                <div class="start-heart">
+                    ❤️
+                </div>
+
+                <p>
+                    Some stories are not meant to be forgotten...
+                </p>
+
+                <button id="startBtn">
+                    Start Our Story
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PANEL 1
+        ========================== -->
+
+        <section class="screen story-panel" id="panel1">
+
+            <div class="panel-number">
+                01 / 06
+            </div>
+
+            <div class="story-text">
+
+                <span>CHAPTER ONE</span>
+
+                <h2>It All Started<br>With A Smile...</h2>
+
+                <p>
+                    We didn't know that one simple meeting
+                    would become such a beautiful part of our lives.
+                </p>
+
+            </div>
+
+
+            <div class="characters together">
+
                 <div class="stickman boy">
                     <div class="head"></div>
                     <div class="body"></div>
@@ -30,7 +80,9 @@
                     <div class="leg right"></div>
                 </div>
 
-                <div class="heart">❤️</div>
+                <div class="heart">
+                    ❤️
+                </div>
 
                 <div class="stickman girl">
                     <div class="head"></div>
@@ -40,33 +92,46 @@
                     <div class="leg left"></div>
                     <div class="leg right"></div>
                 </div>
+
             </div>
 
-            <p class="quote">
-                "Some beautiful stories<br>
-                begin with just a smile..."
-            </p>
 
-            <div class="scroll">↓ Scroll to continue ↓</div>
-        </div>
-    </section>
+            <button class="nextBtn">
+                Next →
+            </button>
+
+        </section>
 
 
-    <!-- Happy Days -->
-    <section class="panel happy">
-        <div class="story-content">
+        <!-- =========================
+             PANEL 2
+        ========================== -->
 
-            <span class="chapter">CHAPTER 01</span>
+        <section class="screen story-panel" id="panel2">
 
-            <h2>The Happiest Days</h2>
+            <div class="panel-number">
+                02 / 06
+            </div>
 
-            <p>
-                There was a time when we didn't need anything
-                except each other.
-            </p>
+            <div class="story-text">
 
-            <div class="scene">
-                <div class="stickman boy walking-boy">
+                <span>CHAPTER TWO</span>
+
+                <h2>The Happiest<br>Days</h2>
+
+                <p>
+                    We laughed together.
+                    We talked for hours.
+                    For a while, it felt like nothing
+                    could ever separate us.
+                </p>
+
+            </div>
+
+
+            <div class="characters happy-scene">
+
+                <div class="stickman boy walking">
                     <div class="head"></div>
                     <div class="body"></div>
                     <div class="arm left"></div>
@@ -75,9 +140,11 @@
                     <div class="leg right"></div>
                 </div>
 
-                <div class="heart floating">❤️</div>
+                <div class="heart floating">
+                    ❤️
+                </div>
 
-                <div class="stickman girl walking-girl">
+                <div class="stickman girl walking">
                     <div class="head"></div>
                     <div class="body"></div>
                     <div class="arm left"></div>
@@ -85,31 +152,48 @@
                     <div class="leg left"></div>
                     <div class="leg right"></div>
                 </div>
+
             </div>
 
-            <p class="memory">
-                "Every conversation felt special.<br>
-                Every moment felt like forever."
-            </p>
 
-        </div>
-    </section>
+            <div class="memory">
+                "Those moments were everything."
+            </div>
 
 
-    <!-- Family Pressure -->
-    <section class="panel pressure">
-        <div class="story-content">
+            <button class="nextBtn">
+                Next →
+            </button>
 
-            <span class="chapter">CHAPTER 02</span>
+        </section>
 
-            <h2>Everything Changed...</h2>
 
-            <p>
-                Sometimes love is not defeated by two people.
-                Sometimes circumstances become stronger than love.
-            </p>
+        <!-- =========================
+             PANEL 3
+        ========================== -->
 
-            <div class="scene distant">
+        <section class="screen story-panel dark-panel" id="panel3">
+
+            <div class="panel-number">
+                03 / 06
+            </div>
+
+            <div class="story-text">
+
+                <span>CHAPTER THREE</span>
+
+                <h2>Then Everything<br>Changed...</h2>
+
+                <p>
+                    Sometimes two people love each other,
+                    but circumstances become stronger
+                    than their love.
+                </p>
+
+            </div>
+
+
+            <div class="characters separated">
 
                 <div class="stickman boy">
                     <div class="head"></div>
@@ -120,7 +204,9 @@
                     <div class="leg right"></div>
                 </div>
 
-                <div class="space"></div>
+                <div class="broken-heart">
+                    💔
+                </div>
 
                 <div class="stickman girl sad">
                     <div class="head"></div>
@@ -133,33 +219,68 @@
 
             </div>
 
+
             <div class="dialogue">
-                <p>Girl: "I'm sorry..."</p>
-                <p>Boy: "What happened?"</p>
+                "I can't talk to you anymore..."
             </div>
 
-        </div>
-    </section>
+
+            <button class="nextBtn">
+                Next →
+            </button>
+
+        </section>
 
 
-    <!-- Silence -->
-    <section class="panel silence">
-        <div class="story-content">
+        <!-- =========================
+             PANEL 4
+        ========================== -->
 
-            <span class="chapter">CHAPTER 03</span>
+        <section class="screen story-panel dark-panel" id="panel4">
 
-            <h2>The Silence</h2>
-
-            <div class="phone-message">
-                <p>Boy: Are you there?</p>
-                <p>Boy: Please talk to me...</p>
-                <p>Boy: I miss you.</p>
-                <p class="dots">...</p>
+            <div class="panel-number">
+                04 / 06
             </div>
 
-            <div class="scene alone">
+            <div class="story-text">
 
-                <div class="stickman boy waiting">
+                <span>CHAPTER FOUR</span>
+
+                <h2>The Silence</h2>
+
+                <p>
+                    Messages were sent.
+                    Calls were made.
+                    But there was no answer.
+                </p>
+
+            </div>
+
+
+            <div class="phone">
+
+                <div class="message">
+                    Are you there?
+                </div>
+
+                <div class="message">
+                    Please talk to me...
+                </div>
+
+                <div class="message">
+                    I miss you.
+                </div>
+
+                <div class="typing">
+                    ...
+                </div>
+
+            </div>
+
+
+            <div class="waiting-boy">
+
+                <div class="stickman boy">
                     <div class="head"></div>
                     <div class="body"></div>
                     <div class="arm left"></div>
@@ -170,30 +291,42 @@
 
             </div>
 
-            <p>
-                He kept waiting.<br>
-                But the replies never came.
-            </p>
 
-        </div>
-    </section>
+            <button class="nextBtn">
+                Next →
+            </button>
+
+        </section>
 
 
-    <!-- Disappearing -->
-    <section class="panel disappearing">
-        <div class="story-content">
+        <!-- =========================
+             PANEL 5
+        ========================== -->
 
-            <span class="chapter">CHAPTER 04</span>
+        <section class="screen story-panel disappearing-panel" id="panel5">
 
-            <h2>And Then...</h2>
+            <div class="panel-number">
+                05 / 06
+            </div>
 
-            <p>
-                Slowly, he stopped asking questions.
-            </p>
+            <div class="story-text">
 
-            <div class="fade-scene">
+                <span>CHAPTER FIVE</span>
 
-                <div class="stickman boy fading-boy">
+                <h2>He Slowly<br>Disappeared...</h2>
+
+                <p>
+                    Not because he stopped caring.
+                    But because he finally understood
+                    that he was no longer wanted.
+                </p>
+
+            </div>
+
+
+            <div class="vanishing-boy">
+
+                <div class="stickman boy">
                     <div class="head"></div>
                     <div class="body"></div>
                     <div class="arm left"></div>
@@ -204,21 +337,31 @@
 
             </div>
 
-            <p class="fade-text">
-                He slowly disappeared...
-            </p>
 
-        </div>
-    </section>
+            <div class="fade-line">
+                Some people disappear quietly...
+            </div>
 
 
-    <!-- Ending -->
-    <section class="panel ending">
-        <div class="story-content">
+            <button class="nextBtn">
+                Next →
+            </button>
 
-            <div class="moon">🌙</div>
+        </section>
+
+
+        <!-- =========================
+             FINAL PANEL
+        ========================== -->
+
+        <section class="screen story-panel final-panel" id="panel6">
+
+            <div class="moon">
+                🌙
+            </div>
 
             <div class="final-girl">
+
                 <div class="stickman girl">
                     <div class="head"></div>
                     <div class="body"></div>
@@ -227,27 +370,43 @@
                     <div class="leg left"></div>
                     <div class="leg right"></div>
                 </div>
+
             </div>
 
-            <h2>Some Stories Never End...</h2>
 
-            <p class="final-message">
-                Some people don't leave your life suddenly.
-                <br><br>
-                They slowly become a memory...
-                <br><br>
-                until one day,
-                you realize they are no longer there.
-            </p>
+            <div class="final-text">
 
-            <div class="final-heart">♡</div>
+                <span>THE END</span>
 
-            <p class="end">
-                "And maybe... that was our story."
-            </p>
+                <h2>But Some Memories<br>Never Disappear.</h2>
 
-        </div>
-    </section>
+                <p>
+                    Some people don't leave your life suddenly.
+                    <br><br>
+                    They slowly become a memory...
+                    <br><br>
+                    until one day you realize
+                    they are no longer there.
+                </p>
+
+                <div class="final-heart">
+                    ♡
+                </div>
+
+                <div class="last-line">
+                    "And maybe... that was our story."
+                </div>
+
+            </div>
+
+
+            <button id="restartBtn">
+                ↻ Experience Again
+            </button>
+
+        </section>
+
+    </main>
 
 
     <script src="script.js"></script>
