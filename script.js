@@ -1,15 +1,15 @@
 const screens = document.querySelectorAll(".screen");
 
 const startBtn = document.getElementById("startBtn");
+
 const nextButtons = document.querySelectorAll(".nextBtn");
-const restartBtn = document.getElementById("restartBtn");
 
 let currentPanel = 0;
 
 
-/* =========================
+/* =========================================
    SHOW PANEL
-========================= */
+========================================= */
 
 function showPanel(index) {
 
@@ -17,27 +17,34 @@ function showPanel(index) {
         return;
     }
 
+
     screens.forEach((screen) => {
+
         screen.classList.remove("active");
+
     });
+
 
     screens[index].classList.add("active");
 
     currentPanel = index;
 
+
     restartAnimations(screens[index]);
+
 }
 
 
-/* =========================
-   RESTART PANEL ANIMATIONS
-========================= */
+/* =========================================
+   RESTART ANIMATIONS
+========================================= */
 
 function restartAnimations(screen) {
 
     const animatedElements = screen.querySelectorAll(
-        ".heart, .walking, .vanishing-boy, .moon, .phone, .dialogue, .silence-phone, .message, .typing"
+        ".heart, .walking, .vanishing-boy, .moon, .phone, .dialogue, .silence-phone, .message, .typing, .letter-content, .letter-line, .years-line, .goodbye"
     );
+
 
     animatedElements.forEach((element) => {
 
@@ -48,12 +55,13 @@ function restartAnimations(screen) {
         element.style.animation = "";
 
     });
+
 }
 
 
-/* =========================
+/* =========================================
    START STORY
-========================= */
+========================================= */
 
 if (startBtn) {
 
@@ -66,56 +74,35 @@ if (startBtn) {
 }
 
 
-/* =========================
+/* =========================================
    NEXT BUTTONS
-========================= */
+========================================= */
 
-nextButtons.forEach((button, index) => {
+nextButtons.forEach((button) => {
 
     button.addEventListener("click", () => {
 
-        /*
-            Start screen = 0
-            Panel 1     = 1
-            Panel 2     = 2
-            Panel 3     = 3
-            Panel 4     = 4
-            Panel 5     = 5
-            Panel 6     = 6
-        */
+        const nextPanel = currentPanel + 1;
 
-        showPanel(index + 2);
+        if (nextPanel < screens.length) {
+
+            showPanel(nextPanel);
+
+        }
 
     });
 
 });
 
 
-/* =========================
-   RESTART STORY
-========================= */
-
-if (restartBtn) {
-
-    restartBtn.addEventListener("click", () => {
-
-        showPanel(0);
-
-    });
-
-}
-
-
-/* =========================
+/* =========================================
    KEYBOARD CONTROLS
-========================= */
+========================================= */
 
 document.addEventListener("keydown", (event) => {
 
-    /*
-        Right Arrow / Space
-        = Next
-    */
+
+    /* RIGHT ARROW / SPACE */
 
     if (
         event.key === "ArrowRight" ||
@@ -123,6 +110,7 @@ document.addEventListener("keydown", (event) => {
     ) {
 
         event.preventDefault();
+
 
         if (currentPanel < screens.length - 1) {
 
@@ -133,14 +121,12 @@ document.addEventListener("keydown", (event) => {
     }
 
 
-    /*
-        Left Arrow
-        = Previous
-    */
+    /* LEFT ARROW */
 
     if (event.key === "ArrowLeft") {
 
         event.preventDefault();
+
 
         if (currentPanel > 0) {
 
@@ -153,15 +139,17 @@ document.addEventListener("keydown", (event) => {
 });
 
 
-/* =========================
-   START AT FIRST SCREEN
-========================= */
+/* =========================================
+   START AT SCREEN 0
+========================================= */
 
 showPanel(0);
 
 
-/* =========================
-   CONSOLE MESSAGE
-========================= */
+/* =========================================
+   CONSOLE
+========================================= */
 
-console.log("❤️ S & M — Our Story is ready.");
+console.log(
+    "❤️ S & M — Our Story — 7 Panels Ready."
+);
