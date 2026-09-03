@@ -2596,3 +2596,483 @@ button {
     }
 
 }
+/* =========================================
+   PANEL 7 — S'S LAST MESSAGE
+========================================= */
+
+.letter-panel {
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(130, 80, 140, .10),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            #040409,
+            #0b0710,
+            #030308
+        );
+
+    overflow: hidden;
+}
+
+
+/* SOFT CENTER GLOW */
+
+.letter-glow {
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(170,100,160,.08),
+            transparent 68%
+        );
+
+    filter: blur(10px);
+
+    animation: letterGlow 5s ease-in-out infinite;
+
+}
+
+
+/* CONTENT */
+
+.letter-content {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: min(700px, 88%);
+
+    height: 88vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+
+/* LABEL */
+
+.letter-label {
+
+    margin-bottom: 10px;
+
+    color: #817685;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    animation:
+        letterFade 1.5s ease forwards;
+
+}
+
+
+/* HEART */
+
+.letter-heart {
+
+    margin-bottom: 12px;
+
+    font-size: 20px;
+
+    opacity: 0;
+
+    animation:
+        heartAppear 2s ease forwards;
+
+    animation-delay: .6s;
+
+}
+
+
+/* MESSAGE */
+
+.letter-message {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+
+/* EACH LINE */
+
+.letter-line {
+
+    margin: 5px 0;
+
+    color: #b9afb9;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+
+    opacity: 0;
+
+    transform: translateY(12px);
+
+    animation:
+        lineAppear .9s ease forwards;
+
+}
+
+
+.line-1 {
+    animation-delay: 1s;
+}
+
+.line-2 {
+    animation-delay: 1.7s;
+}
+
+.line-3 {
+    animation-delay: 2.4s;
+}
+
+.line-4 {
+    animation-delay: 3.1s;
+}
+
+.line-5 {
+    animation-delay: 3.8s;
+}
+
+.line-6 {
+    animation-delay: 4.5s;
+}
+
+.line-7 {
+    animation-delay: 6.2s;
+}
+
+.line-8 {
+    animation-delay: 6.9s;
+}
+
+
+/* 11 YEARS */
+
+.years-line {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 20px 0;
+
+    opacity: 0;
+
+    animation:
+        yearsAppear 1.3s ease forwards;
+
+    animation-delay: 5.1s;
+
+}
+
+
+.years-line span {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 18px;
+
+    letter-spacing: 3px;
+
+    color: #eee5ed;
+
+}
+
+
+.years-line small {
+
+    color: #746b76;
+
+    font-size: 10px;
+
+    font-style: italic;
+
+}
+
+
+/* GOODBYE */
+
+.goodbye {
+
+    margin-top: 25px;
+
+    opacity: 0;
+
+    animation:
+        goodbyeAppear 2s ease forwards;
+
+    animation-delay: 7.8s;
+
+}
+
+
+.goodbye span {
+
+    display: block;
+
+    font-size: 27px;
+
+    color: #eee7ed;
+
+    letter-spacing: 1px;
+
+}
+
+
+.goodbye div {
+
+    margin-top: 10px;
+
+    font-size: 19px;
+
+    animation:
+        goodbyeHeart 2s ease-in-out infinite;
+
+}
+
+
+/* ANIMATIONS */
+
+@keyframes letterGlow {
+
+    0%, 100% {
+
+        opacity: .5;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.9);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+
+    }
+
+}
+
+
+@keyframes letterFade {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+@keyframes heartAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(.6);
+
+    }
+
+    to {
+
+        opacity: .8;
+
+        transform: scale(1);
+
+    }
+
+}
+
+
+@keyframes lineAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(12px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+@keyframes yearsAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(.85);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
+
+}
+
+
+@keyframes goodbyeAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+@keyframes goodbyeHeart {
+
+    0%, 100% {
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        transform: scale(1.2);
+
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width:700px) {
+
+    .letter-content {
+
+        width: 90%;
+
+        height: 90vh;
+
+    }
+
+
+    .letter-line {
+
+        font-size: 10px;
+
+        line-height: 1.5;
+
+        margin: 3px 0;
+
+    }
+
+
+    .years-line {
+
+        margin: 13px 0;
+
+        gap: 8px;
+
+    }
+
+
+    .years-line span {
+
+        font-size: 13px;
+
+        letter-spacing: 2px;
+
+    }
+
+
+    .goodbye {
+
+        margin-top: 15px;
+
+    }
+
+
+    .goodbye span {
+
+        font-size: 22px;
+
+    }
+
+}
