@@ -1,7 +1,7 @@
-/* ==============================
+/* =========================================
    OUR LITTLE STORY
-   Main Website Styling
-================================ */
+   CINEMATIC PANEL DESIGN
+========================================= */
 
 * {
     margin: 0;
@@ -9,350 +9,813 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 body {
     font-family: Georgia, "Times New Roman", serif;
-    background: #08080d;
-    color: #ffffff;
-    overflow-x: hidden;
+    background: #050507;
+    color: white;
 }
 
 
-/* ==============================
-   PANELS
-================================ */
+/* =========================================
+   STORY CONTAINER
+========================================= */
 
-.panel {
-    min-height: 100vh;
+#story {
     width: 100%;
+    height: 100vh;
     position: relative;
+    overflow: hidden;
+}
+
+
+/* =========================================
+   EVERY SCREEN
+========================================= */
+
+.screen {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
-    padding: 60px 20px;
+    text-align: center;
+
+    padding: 30px 20px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(1.04);
+
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s ease,
+        visibility 0.9s ease;
 
     overflow: hidden;
 }
 
-.story-content {
-    width: min(900px, 100%);
-    text-align: center;
-    position: relative;
-    z-index: 5;
-}
 
-.small-text {
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    letter-spacing: 5px;
-    opacity: 0.65;
-    margin-bottom: 20px;
-}
+/* Active panel */
 
-.chapter {
-    display: block;
+.screen.active {
+    opacity: 1;
+    visibility: visible;
 
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    letter-spacing: 4px;
-
-    opacity: 0.5;
-    margin-bottom: 18px;
-}
-
-h1 {
-    font-size: clamp(45px, 9vw, 90px);
-    font-weight: normal;
-    letter-spacing: -3px;
-    margin-bottom: 45px;
-}
-
-h2 {
-    font-size: clamp(34px, 6vw, 62px);
-    font-weight: normal;
-    margin-bottom: 25px;
-}
-
-p {
-    font-family: Arial, sans-serif;
-    font-size: 17px;
-    line-height: 1.9;
-    opacity: 0.8;
+    transform: scale(1);
+    z-index: 10;
 }
 
 
-/* ==============================
-   INTRO
-================================ */
+/* =========================================
+   BACKGROUND
+========================================= */
 
-.intro {
-    background:
-        radial-gradient(circle at center, #25152a 0%, #0d0b13 45%, #050509 100%);
-}
-
-.intro::before {
+.screen::before {
     content: "";
+
     position: absolute;
-    width: 450px;
-    height: 450px;
+
+    width: 500px;
+    height: 500px;
 
     border-radius: 50%;
 
-    background: rgba(255, 80, 130, 0.08);
-    filter: blur(80px);
-}
+    background: rgba(255, 80, 130, 0.07);
 
-.scroll {
-    margin-top: 55px;
+    filter: blur(100px);
 
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    letter-spacing: 3px;
-
-    opacity: 0.45;
-
-    animation: scrollPulse 2s infinite;
-}
-
-@keyframes scrollPulse {
-    0%, 100% {
-        transform: translateY(0);
-        opacity: 0.3;
-    }
-
-    50% {
-        transform: translateY(8px);
-        opacity: 0.8;
-    }
+    pointer-events: none;
 }
 
 
-/* ==============================
-   HAPPY SECTION
-================================ */
+/* =========================================
+   START SCREEN
+========================================= */
 
-.happy {
-    background:
-        linear-gradient(
-            180deg,
-            #261426 0%,
-            #351a2d 50%,
-            #241222 100%
-        );
-}
-
-.happy .memory {
-    margin-top: 50px;
-
-    font-family: Georgia, serif;
-    font-style: italic;
-
-    font-size: 20px;
-    opacity: 0.7;
-}
-
-
-/* ==============================
-   FAMILY PRESSURE
-================================ */
-
-.pressure {
+#startScreen {
     background:
         radial-gradient(
             circle at center,
-            #241b29 0%,
-            #111016 45%,
-            #07070b 100%
+            #271526 0%,
+            #0e0b13 45%,
+            #030305 100%
         );
 }
 
-.pressure h2 {
-    color: #ddd;
+.start-content {
+    position: relative;
+
+    width: min(700px, 100%);
+
+    animation: startAppear 1.5s ease forwards;
 }
 
-.distant {
-    margin: 70px auto 45px;
+@keyframes startAppear {
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
 
-    width: min(600px, 90%);
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.space {
-    flex: 1;
-}
 
-.dialogue {
+.small-title {
     font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    opacity: 0.5;
+
+    margin-bottom: 25px;
+}
+
+
+.start-content h1 {
+    font-size: clamp(45px, 9vw, 90px);
+
+    font-weight: normal;
+
+    letter-spacing: -3px;
+
+    margin-bottom: 30px;
+}
+
+
+.start-heart {
+    font-size: 60px;
+
+    margin: 20px 0 30px;
+
+    animation: heartBeat 2s infinite;
+}
+
+
+.start-content p {
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    opacity: 0.55;
+
+    margin-bottom: 40px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+button {
+    border: 1px solid rgba(255,255,255,0.3);
+
+    background: rgba(255,255,255,0.05);
+
+    color: white;
+
+    padding: 15px 28px;
+
+    border-radius: 50px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+button:hover {
+    background: rgba(255,255,255,0.15);
+
+    border-color: rgba(255,255,255,0.6);
+
+    transform: translateY(-3px);
+}
+
+#startBtn {
+    padding: 17px 35px;
+
+    background: rgba(255, 100, 150, 0.12);
+
+    border-color: rgba(255, 150, 180, 0.4);
+
+    animation: buttonGlow 2.5s infinite;
+}
+
+@keyframes buttonGlow {
+
+    0%, 100% {
+        box-shadow: 0 0 0 rgba(255,100,150,0);
+    }
+
+    50% {
+        box-shadow:
+            0 0 35px rgba(255,100,150,0.18);
+    }
+}
+
+
+/* =========================================
+   STORY PANELS
+========================================= */
+
+.story-panel {
+    background:
+        radial-gradient(
+            circle at center,
+            #261526 0%,
+            #100b13 55%,
+            #050507 100%
+        );
+}
+
+.dark-panel {
+    background:
+        radial-gradient(
+            circle at center,
+            #17131c 0%,
+            #08080d 55%,
+            #020204 100%
+        );
+}
+
+.disappearing-panel {
+    background:
+        radial-gradient(
+            circle at center,
+            #101018 0%,
+            #06060a 60%,
+            #010102 100%
+        );
+}
+
+.final-panel {
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #181727 0%,
+            #08080e 50%,
+            #020204 100%
+        );
+}
+
+
+/* =========================================
+   PANEL NUMBER
+========================================= */
+
+.panel-number {
+    position: absolute;
+
+    top: 30px;
+    left: 30px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    opacity: 0.35;
+}
+
+
+/* =========================================
+   STORY TEXT
+========================================= */
+
+.story-text {
+    position: absolute;
+
+    top: 11%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: min(750px, 90%);
+
+    z-index: 5;
+}
+
+.story-text span,
+.final-text span {
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    opacity: 0.45;
+}
+
+
+.story-text h2 {
+    font-size: clamp(32px, 6vw, 60px);
+
+    font-weight: normal;
+
+    line-height: 1.05;
+
+    margin: 18px 0 20px;
+
+    letter-spacing: -2px;
+}
+
+
+.story-text p {
+    font-family: Arial, sans-serif;
+
+    max-width: 600px;
+
+    margin: auto;
+
     font-size: 14px;
-    line-height: 2.2;
+
+    line-height: 1.8;
 
     opacity: 0.55;
 }
 
 
-/* ==============================
-   SILENCE
-================================ */
+/* =========================================
+   NEXT BUTTON
+========================================= */
 
-.silence {
-    background: #08090e;
+.nextBtn {
+    position: absolute;
+
+    bottom: 35px;
+
+    right: 35px;
+
+    z-index: 20;
 }
 
-.phone-message {
-    width: min(330px, 90%);
 
-    margin: 45px auto;
+/* =========================================
+   CHARACTERS
+========================================= */
 
-    padding: 25px;
+.characters {
+    position: absolute;
 
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 18px;
+    left: 50%;
+    bottom: 16%;
 
-    background: rgba(255,255,255,0.025);
+    transform: translateX(-50%);
 
-    text-align: left;
+    width: min(550px, 90%);
 
-    box-shadow:
-        0 20px 80px rgba(0,0,0,0.5);
+    height: 230px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+
+    gap: 90px;
+
+    z-index: 3;
 }
 
-.phone-message p {
-    font-family: Arial, sans-serif;
-    font-size: 13px;
 
-    padding: 10px 0;
+/* =========================================
+   STICKMAN
+========================================= */
 
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+.stickman {
+    position: relative;
+
+    width: 70px;
+    height: 165px;
+
+    flex-shrink: 0;
 }
 
-.phone-message p:last-child {
-    border-bottom: none;
+
+/* Head */
+
+.stickman .head {
+    position: absolute;
+
+    width: 45px;
+    height: 45px;
+
+    left: 12px;
+    top: 0;
+
+    border: 3px solid white;
+
+    border-radius: 50%;
 }
 
-.dots {
-    text-align: center;
-    letter-spacing: 8px;
-    opacity: 0.25 !important;
+
+/* Body */
+
+.stickman .body {
+    position: absolute;
+
+    width: 3px;
+    height: 65px;
+
+    left: 34px;
+    top: 44px;
+
+    background: white;
 }
 
-.waiting {
-    animation: waiting 3s ease-in-out infinite;
+
+/* Arms */
+
+.stickman .arm {
+    position: absolute;
+
+    width: 43px;
+    height: 3px;
+
+    left: 34px;
+    top: 68px;
+
+    background: white;
+
+    transform-origin: left center;
 }
 
-@keyframes waiting {
+.stickman .arm.left {
+    transform: rotate(145deg);
+}
+
+.stickman .arm.right {
+    transform: rotate(35deg);
+}
+
+
+/* Legs */
+
+.stickman .leg {
+    position: absolute;
+
+    width: 48px;
+    height: 3px;
+
+    left: 34px;
+    top: 108px;
+
+    background: white;
+
+    transform-origin: left center;
+}
+
+.stickman .leg.left {
+    transform: rotate(120deg);
+}
+
+.stickman .leg.right {
+    transform: rotate(60deg);
+}
+
+
+/* Boy */
+
+.boy .head {
+    border-color: #9ed6ff;
+}
+
+.boy .body,
+.boy .arm,
+.boy .leg {
+    background: #9ed6ff;
+}
+
+
+/* Girl */
+
+.girl .head {
+    border-color: #ffadc9;
+}
+
+.girl .body,
+.girl .arm,
+.girl .leg {
+    background: #ffadc9;
+}
+
+
+/* =========================================
+   HEART
+========================================= */
+
+.heart {
+    font-size: 35px;
+
+    margin-bottom: 90px;
+
+    animation:
+        heartFloat 2s ease-in-out infinite;
+}
+
+@keyframes heartFloat {
+
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-12px) scale(1.1);
+    }
+}
+
+
+@keyframes heartBeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.15);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================
+   HAPPY WALKING
+========================================= */
+
+.walking {
+    animation:
+        walking 1.8s ease-in-out infinite;
+}
+
+.happy-scene .walking:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.happy-scene .walking:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes walking {
+
+    0%, 100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    50% {
+        transform: translateY(-13px) rotate(2deg);
+    }
+}
+
+
+/* =========================================
+   SEPARATION
+========================================= */
+
+.separated {
+    gap: 210px;
+}
+
+.broken-heart {
+    font-size: 35px;
+
+    animation: brokenFloat 2.5s infinite;
+}
+
+@keyframes brokenFloat {
+
     0%, 100% {
         transform: translateY(0);
     }
 
     50% {
-        transform: translateY(-8px);
+        transform: translateY(-10px);
     }
 }
 
 
-/* ==============================
-   DISAPPEARING
-================================ */
+/* =========================================
+   DIALOGUE
+========================================= */
 
-.disappearing {
-    background:
-        radial-gradient(
-            circle at center,
-            #11111a 0%,
-            #08080d 55%,
-            #030305 100%
-        );
-}
+.dialogue {
+    position: absolute;
 
-.fade-scene {
-    height: 260px;
+    bottom: 17%;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    left: 50%;
 
-    margin-top: 40px;
-}
-
-.fading-boy {
-    animation: disappear 5s ease-in-out infinite;
-}
-
-.fade-text {
-    margin-top: 30px;
+    transform: translateX(-50%);
 
     font-family: Georgia, serif;
+
     font-style: italic;
 
-    animation: textFade 5s ease-in-out infinite;
+    font-size: 17px;
+
+    opacity: 0.55;
 }
 
-@keyframes disappear {
+
+/* =========================================
+   PHONE
+========================================= */
+
+.phone {
+    position: absolute;
+
+    left: 50%;
+    bottom: 17%;
+
+    transform: translateX(-50%);
+
+    width: min(310px, 85%);
+
+    padding: 15px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.025);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 20px 80px rgba(0,0,0,0.5);
+
+    text-align: left;
+}
+
+.message {
+    padding: 10px 12px;
+
+    margin: 5px 0;
+
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.04);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    opacity: 0.6;
+}
+
+.typing {
+    padding: 10px;
+
+    text-align: center;
+
+    letter-spacing: 7px;
+
+    opacity: 0.25;
+
+    animation: typing 1.5s infinite;
+}
+
+@keyframes typing {
+
+    0%, 100% {
+        opacity: 0.15;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+
+/* =========================================
+   WAITING BOY
+========================================= */
+
+.waiting-boy {
+    position: absolute;
+
+    right: 16%;
+
+    bottom: 12%;
+
+    animation: wait 3s ease-in-out infinite;
+}
+
+@keyframes wait {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+
+/* =========================================
+   VANISHING BOY
+========================================= */
+
+.vanishing-boy {
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 15%;
+
+    transform: translateX(-50%);
+
+    animation: vanish 5s ease-in-out infinite;
+}
+
+@keyframes vanish {
 
     0% {
         opacity: 1;
-        transform: scale(1);
+
+        transform:
+            translateX(-50%)
+            scale(1);
     }
 
-    45% {
-        opacity: 0.65;
-    }
-
-    75% {
-        opacity: 0.18;
-        transform: scale(0.96);
+    55% {
+        opacity: 0.5;
     }
 
     100% {
         opacity: 0;
-        transform: scale(0.9);
-    }
-}
 
-@keyframes textFade {
-
-    0% {
-        opacity: 0.8;
-    }
-
-    70% {
-        opacity: 0.35;
-    }
-
-    100% {
-        opacity: 0.1;
+        transform:
+            translateX(-50%)
+            scale(0.75);
     }
 }
 
 
-/* ==============================
-   ENDING
-================================ */
+.fade-line {
+    position: absolute;
 
-.ending {
-    min-height: 110vh;
+    bottom: 11%;
 
-    background:
-        radial-gradient(
-            circle at 50% 30%,
-            #171725 0%,
-            #08080d 45%,
-            #020204 100%
-        );
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-family: Georgia, serif;
+
+    font-style: italic;
+
+    font-size: 14px;
+
+    opacity: 0.35;
 }
+
+
+/* =========================================
+   FINAL PANEL
+========================================= */
 
 .moon {
-    font-size: 65px;
+    position: absolute;
 
-    margin-bottom: 45px;
+    top: 10%;
+
+    right: 13%;
+
+    font-size: 60px;
 
     animation: moonFloat 4s ease-in-out infinite;
 }
@@ -368,43 +831,62 @@ p {
     }
 }
 
-.final-message {
-    max-width: 600px;
-    margin: 35px auto;
 
-    font-family: Georgia, serif;
-    font-size: 19px;
-    line-height: 2;
+.final-girl {
+    position: absolute;
 
-    opacity: 0.65;
+    left: 20%;
+
+    bottom: 15%;
 }
 
-.final-heart {
-    font-size: 65px;
 
-    margin: 45px 0;
+.final-text {
+    position: absolute;
+
+    left: 50%;
+    top: 18%;
+
+    transform: translateX(-50%);
+
+    width: min(700px, 90%);
+}
+
+
+.final-text h2 {
+    font-size: clamp(32px, 6vw, 55px);
+
+    font-weight: normal;
+
+    line-height: 1.1;
+
+    margin: 20px 0 30px;
+}
+
+
+.final-text p {
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    line-height: 1.8;
 
     opacity: 0.55;
+}
+
+
+.final-heart {
+    font-size: 55px;
+
+    margin: 20px 0;
+
+    opacity: 0.6;
 
     animation: heartBeat 2.5s infinite;
 }
 
-@keyframes heartBeat {
 
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    15% {
-        transform: scale(1.12);
-    }
-
-    30% {
-        transform: scale(1);
-    }
-}
-
-.end {
+.last-line {
     font-family: Georgia, serif;
 
     font-style: italic;
@@ -412,294 +894,97 @@ p {
     font-size: 15px;
 
     opacity: 0.4;
-
-    margin-top: 20px;
 }
 
 
-/* ==============================
-   STICKMAN
-================================ */
-
-.characters,
-.scene {
-    position: relative;
-
-    width: min(500px, 90%);
-    height: 230px;
-
-    margin: 0 auto;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: flex-end;
-
-    gap: 80px;
-}
-
-.stickman {
-    width: 70px;
-    height: 170px;
-
-    position: relative;
-
-    flex-shrink: 0;
-
-    animation: gentleFloat 3s ease-in-out infinite;
-}
-
-@keyframes gentleFloat {
-
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-5px);
-    }
-}
-
-
-/* Head */
-
-.stickman .head {
+#restartBtn {
     position: absolute;
 
-    width: 48px;
-    height: 48px;
+    bottom: 30px;
 
-    border: 3px solid #ffffff;
+    left: 50%;
 
-    border-radius: 50%;
-
-    top: 0;
-    left: 11px;
+    transform: translateX(-50%);
 }
 
 
-/* Body */
-
-.stickman .body {
-    position: absolute;
-
-    width: 3px;
-    height: 65px;
-
-    background: #ffffff;
-
-    top: 47px;
-    left: 34px;
-}
-
-
-/* Arms */
-
-.stickman .arm {
-    position: absolute;
-
-    width: 45px;
-    height: 3px;
-
-    background: #ffffff;
-
-    top: 70px;
-    left: 12px;
-
-    transform-origin: left center;
-}
-
-.stickman .arm.left {
-    transform: rotate(35deg);
-}
-
-.stickman .arm.right {
-    transform: rotate(-35deg);
-}
-
-
-/* Legs */
-
-.stickman .leg {
-    position: absolute;
-
-    width: 50px;
-    height: 3px;
-
-    background: #ffffff;
-
-    top: 110px;
-    left: 34px;
-
-    transform-origin: left center;
-}
-
-.stickman .leg.left {
-    transform: rotate(120deg);
-}
-
-.stickman .leg.right {
-    transform: rotate(60deg);
-}
-
-
-/* Girl */
-
-.girl .head {
-    border-color: #ffb6d2;
-}
-
-.girl .body,
-.girl .arm,
-.girl .leg {
-    background: #ffb6d2;
-}
-
-
-/* Boy */
-
-.boy .head {
-    border-color: #a9d8ff;
-}
-
-.boy .body,
-.boy .arm,
-.boy .leg {
-    background: #a9d8ff;
-}
-
-
-/* ==============================
-   HEART
-================================ */
-
-.heart {
-    font-size: 35px;
-
-    animation: heartFloat 2s ease-in-out infinite;
-}
-
-.floating {
-    margin-bottom: 80px;
-}
-
-@keyframes heartFloat {
-
-    0%, 100% {
-        transform: translateY(0) scale(1);
-    }
-
-    50% {
-        transform: translateY(-15px) scale(1.08);
-    }
-}
-
-
-/* ==============================
-   WALKING ANIMATION
-================================ */
-
-.walking-boy {
-    animation:
-        walkBoy 2s ease-in-out infinite;
-}
-
-.walking-girl {
-    animation:
-        walkGirl 2s ease-in-out infinite;
-}
-
-@keyframes walkBoy {
-
-    0%, 100% {
-        transform: translateX(-10px) rotate(0deg);
-    }
-
-    50% {
-        transform: translateX(25px) rotate(-2deg);
-    }
-}
-
-@keyframes walkGirl {
-
-    0%, 100% {
-        transform: translateX(10px) rotate(0deg);
-    }
-
-    50% {
-        transform: translateX(-25px) rotate(2deg);
-    }
-}
-
-
-/* ==============================
+/* =========================================
    MOBILE
-================================ */
+========================================= */
 
 @media (max-width: 600px) {
 
-    .panel {
-        padding: 45px 18px;
+    .screen {
+        padding: 20px;
     }
 
-    h1 {
-        letter-spacing: -2px;
+    .panel-number {
+        top: 20px;
+        left: 20px;
     }
 
-    p {
-        font-size: 15px;
+    .story-text {
+        top: 10%;
     }
 
-    .characters,
-    .scene {
-        gap: 35px;
-        height: 210px;
+    .story-text h2 {
+        font-size: 35px;
     }
 
-    .stickman {
+    .story-text p {
+        font-size: 13px;
+    }
+
+    .characters {
+        bottom: 17%;
+
+        gap: 45px;
+    }
+
+    .separated {
+        gap: 110px;
+    }
+
+    .nextBtn {
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .waiting-boy {
+        right: 12%;
+        bottom: 14%;
+    }
+
+    .final-girl {
+        left: 10%;
+        bottom: 15%;
         transform: scale(0.85);
     }
 
-    .distant {
-        width: 100%;
-    }
-
-    .final-message {
-        font-size: 17px;
-    }
-
     .moon {
-        font-size: 50px;
+        right: 10%;
+        top: 8%;
+        font-size: 45px;
+    }
+
+    .final-text {
+        top: 14%;
+    }
+
+    .final-text h2 {
+        font-size: 32px;
+    }
+
+    .final-text p {
+        font-size: 14px;
     }
 }
 
 
-/* ==============================
-   SELECTION
-================================ */
-
-::selection {
-    background: rgba(255, 120, 160, 0.3);
-}
-
-
-/* ==============================
-   SCROLLBAR
-================================ */
+/* =========================================
+   SCROLLBAR DISABLED
+========================================= */
 
 ::-webkit-scrollbar {
-    width: 7px;
-}
-
-::-webkit-scrollbar-track {
-    background: #050507;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #34343e;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #555565;
+    display: none;
 }
