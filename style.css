@@ -822,3 +822,496 @@ button {
         font-size: 58px;
     }
    }
+/* =========================================
+   PRIVATE TUITION CLASSROOM
+========================================= */
+
+.tuition-panel {
+    background:
+        radial-gradient(
+            circle at 70% 30%,
+            rgba(255, 180, 100, 0.10),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #17121b,
+            #251b22,
+            #0d0b12
+        );
+}
+
+/* Classroom board */
+
+.classroom-board {
+    position: absolute;
+    right: 8%;
+    top: 8%;
+
+    width: 35%;
+    height: 130px;
+
+    padding: 22px;
+
+    border: 8px solid #553a2b;
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            rgba(30, 55, 40, 0.95),
+            rgba(18, 40, 28, 0.98)
+        );
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.45),
+        inset 0 0 30px rgba(255,255,255,0.04);
+
+    transform: rotate(-1deg);
+
+    animation: boardAppear 1.2s ease;
+}
+
+.board-title {
+    font-family: Arial, sans-serif;
+    color: #e7d8bb;
+    font-size: 12px;
+    letter-spacing: 4px;
+}
+
+.board-line {
+    margin-top: 20px;
+    color: rgba(255,255,255,0.65);
+    font-style: italic;
+    font-size: 14px;
+}
+
+/* Classroom floor */
+
+.classroom {
+    position: absolute;
+    right: 6%;
+    bottom: 10%;
+
+    width: 48%;
+    height: 48%;
+}
+
+/* Desks */
+
+.desk {
+    position: absolute;
+
+    width: 150px;
+    height: 18px;
+
+    background: #7a543a;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,0.35);
+}
+
+.desk::before,
+.desk::after {
+    content: "";
+
+    position: absolute;
+
+    width: 5px;
+    height: 65px;
+
+    background: #513828;
+
+    top: 15px;
+}
+
+.desk::before {
+    left: 15px;
+    transform: rotate(5deg);
+}
+
+.desk::after {
+    right: 15px;
+    transform: rotate(-5deg);
+}
+
+.desk-one {
+    left: 3%;
+    bottom: 17%;
+}
+
+.desk-two {
+    right: 5%;
+    bottom: 17%;
+}
+
+/* Students */
+
+.student {
+    position: absolute;
+    bottom: 28%;
+
+    animation: studentAppear 1.5s ease forwards;
+}
+
+.student-s {
+    left: 10%;
+}
+
+.student-m {
+    right: 15%;
+    animation-delay: 0.4s;
+}
+
+.student-label {
+    text-align: center;
+    margin-top: 4px;
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+
+    color: #aaa0aa;
+}
+
+/* First look */
+
+.first-look {
+    position: absolute;
+
+    left: 49%;
+    top: 27%;
+
+    color: #ff719f;
+    font-size: 32px;
+
+    animation:
+        firstLook 2s ease-in-out infinite;
+}
+
+/* =========================================
+   HAPPY WORLD
+========================================= */
+
+.happy-panel {
+    background:
+        radial-gradient(
+            circle at 55% 45%,
+            rgba(255, 96, 160, 0.13),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #170c1c,
+            #25102a,
+            #0b0710
+        );
+}
+
+.happy-world {
+    position: absolute;
+
+    right: 6%;
+    bottom: 8%;
+
+    width: 48%;
+    height: 55%;
+}
+
+/* Characters */
+
+.happy-boy {
+    position: absolute;
+    left: 15%;
+    bottom: 8%;
+}
+
+.happy-girl {
+    position: absolute;
+    right: 15%;
+    bottom: 8%;
+}
+
+/* Walking animation */
+
+.walking {
+    animation:
+        gentleWalk 1.8s ease-in-out infinite;
+}
+
+/* Heart */
+
+.conversation-heart {
+    position: absolute;
+
+    left: 50%;
+    top: 27%;
+
+    font-size: 45px;
+
+    animation:
+        heartBeat 1.4s infinite,
+        heartFloat 3s ease-in-out infinite;
+}
+
+/* Speech bubbles */
+
+.speech-bubble {
+    position: absolute;
+
+    max-width: 180px;
+
+    padding: 12px 16px;
+
+    border-radius: 18px;
+
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    color: white;
+
+    background: rgba(255,255,255,0.08);
+
+    border: 1px solid rgba(255,255,255,0.10);
+
+    backdrop-filter: blur(8px);
+
+    animation: bubbleAppear 1.5s ease forwards;
+}
+
+.bubble-s {
+    left: 4%;
+    top: 12%;
+}
+
+.bubble-m {
+    right: 0;
+    top: 30%;
+
+    animation-delay: 0.8s;
+}
+
+/* Stars */
+
+.small-star {
+    position: absolute;
+
+    color: #ffd5e5;
+
+    font-size: 16px;
+
+    animation: starTwinkle 2s infinite;
+}
+
+.star-one {
+    left: 30%;
+    top: 5%;
+}
+
+.star-two {
+    right: 25%;
+    top: 12%;
+
+    animation-delay: 0.6s;
+}
+
+.star-three {
+    left: 55%;
+    bottom: 40%;
+
+    animation-delay: 1.2s;
+}
+
+
+/* =========================================
+   NEW ANIMATIONS
+========================================= */
+
+@keyframes boardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(-25px) rotate(-3deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(-1deg);
+    }
+
+}
+
+@keyframes studentAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes firstLook {
+
+    0%,
+    100% {
+        opacity: 0.35;
+        transform: scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+}
+
+@keyframes gentleWalk {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-7px) rotate(1deg);
+    }
+
+}
+
+@keyframes heartFloat {
+
+    0%,
+    100% {
+        margin-top: 0;
+    }
+
+    50% {
+        margin-top: -14px;
+    }
+
+}
+
+@keyframes bubbleAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+@keyframes starTwinkle {
+
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE CLASSROOM
+========================================= */
+
+@media (max-width: 700px) {
+
+    .classroom-board {
+        top: 8%;
+        right: 7%;
+        width: 50%;
+        height: 90px;
+        padding: 14px;
+    }
+
+    .board-title {
+        font-size: 8px;
+        letter-spacing: 2px;
+    }
+
+    .board-line {
+        margin-top: 12px;
+        font-size: 10px;
+    }
+
+    .classroom {
+        right: 0;
+        bottom: 8%;
+        width: 100%;
+        height: 42%;
+    }
+
+    .student-s {
+        left: 8%;
+    }
+
+    .student-m {
+        right: 8%;
+    }
+
+    .desk {
+        width: 100px;
+    }
+
+    .first-look {
+        left: 47%;
+        top: 20%;
+        font-size: 25px;
+    }
+
+    .happy-world {
+        right: 0;
+        bottom: 8%;
+        width: 100%;
+        height: 45%;
+    }
+
+    .happy-boy {
+        left: 8%;
+    }
+
+    .happy-girl {
+        right: 8%;
+    }
+
+    .speech-bubble {
+        max-width: 130px;
+        font-size: 9px;
+        padding: 9px 11px;
+    }
+
+    .bubble-s {
+        left: 0;
+        top: 0;
+    }
+
+    .bubble-m {
+        right: 0;
+        top: 20%;
+    }
+
+    .conversation-heart {
+        left: 46%;
+        top: 30%;
+        font-size: 32px;
+    }
+
+}
